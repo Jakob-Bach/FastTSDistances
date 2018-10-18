@@ -1,5 +1,6 @@
 # Fast Dissimilarity Computations for Time Series
 
+[![Build Status](https://travis-ci.com/Jakob-Bach/FastTSDistances.svg?branch=master)](https://travis-ci.com/Jakob-Bach/FastTSDistances)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This R package contains fast (mostly C++) implementations of time series dissimilarities, simple aggregation functions for time series and cluster validity indices.
