@@ -1,0 +1,33 @@
+Package: FastTSDistances
+Type: Package
+Title: Fast dissimilarity computations for time series
+Version: 0.1.20
+Date: 2018-09-28
+Authors@R: c(person("Jakob", "Bach", role = c("aut", "cre"),
+                     email = "jakob.bach@kit.edu"))
+Author: Jakob Bach [aut, cre]
+Maintainer: Jakob Bach <jakob.bach@kit.edu>
+Description: Fast implementations of distance measures for time series.
+Depends: R (>= 3.1.0)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    doParallel (>= 1.0.10),
+    foreach (>= 1.4.3),
+    pdc (>= 1.0.3),
+    Rcpp (>= 0.12.12)
+LinkingTo: Rcpp
+RoxygenNote: 6.0.1
+Suggests:
+    clusterCrit(>= 1.2.7),
+    clv (>= 0.3-2.1),
+    dtw (>= 1.18-1),
+    dtwclust (>= 4.0.3),
+    igraph (>= 1.1.2),
+    mcclust (>= 1.0),
+    proxy (>= 0.4-17),
+    testthat,
+    TSclust (>= 1.2.3),
+    TSdist (>= 3.4),
+    Weighted.Desc.Stat (>= 1.0)
