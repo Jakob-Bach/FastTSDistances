@@ -7,7 +7,7 @@ Authors@R: c(person("Jakob", "Bach", role = c("aut", "cre"),
                      email = "jakob.bach@kit.edu"))
 Author: Jakob Bach [aut, cre]
 Maintainer: Jakob Bach <jakob.bach@kit.edu>
-Description: Fast implementations of distance measures for time series.
+Description: Fast implementations of dissimilarity measures and simple aggregation functions for time series, plus cluster validity indices.
 Depends: R (>= 3.1.0)
 License: MIT + file LICENSE
 Encoding: UTF-8

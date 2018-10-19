@@ -7,6 +7,7 @@
 This R package contains fast (mostly C++) implementations of time series dissimilarities, simple aggregation functions for time series and cluster validity indices.
 The package is not on `CRAN`, but can be installed manually.
 Assuming you have installed the package `devtools`, you can simply run `devtools::install_github("Jakob-Bach/FastTSDistances")` to install `FastTSDistances` into your local R package repository.
+After installation, you can call `help(package = "FastTSDistances")` to get an overview of the package's functions.
 
 ## Aggregation Functions
 
