@@ -15,12 +15,18 @@ All aggregation functions aggregate intervals of a fixed length from univariate 
 
 - piecewise kurtosis
 - piecewise maximum
-- piecewise mean
+- piecewise mean [1, 2]
 - piecewise median
 - piecewise minimum
 - piecewise skewness
 - piecewise standard deviation
-- Symbolic Aggregate Approximation (SAX)
+- Symbolic Aggregate Approximation [3] (SAX)
+
+[1] Keogh, E. J. & Pazzani, M. J. (2000). Scaling up dynamic time warping for datamining applications.
+
+[2] Keogh, E., Chakrabarti, K., Pazzani, M. & Mehrotra, S. (2001). Dimensionality reduction for fast similarity search in large time series databases.
+
+[3] Lin, J., Keogh, E., Lonardi, S. & Chiu, B. (2003). A symbolic representation of time series, with implications for streaming algorithms.
 
 ## Cluster Validity Indices
 
