@@ -69,15 +69,38 @@ We provide internal as well as external cluster validity indices.
 
 All dissimilarities support univariate time series (=vectors) as well as multivariate time series (matrices with the columns representing different attributes).
 
-- Complexity-Invariant Distance (CID) for L2 metric and DTW
-- Compression-/complexity-based dissimilarity (variant of CDM, using SAX representation and zip compression)
-- Temporal correlation correction factor (CORT) for L2 metric and DTW
-- Edit Distance on Real Sequences (EDR) (optional: Sakoe-Chiba window)
-- Edit Distance with Real Penalty (ERP) (optional: Sakoe-Chiba window)
-- Dynamic Time Warping (DTW) (optional: Sakoe-Chiba window)
+- Complexity-Invariant Distance (CID) [1] for L2 metric and DTW
+- Compression-/complexity-based dissimilarity [2, 3] (variant of CDM, using SAX representation and zip compression)
+- Correlaion-based distance [4]
+- Temporal correlation correction factor (CORT) [5] for L2 metric and DTW
+- Edit Distance on Real Sequences (EDR) [6] (optional: Sakoe-Chiba window [7])
+- Edit Distance with Real Penalty (ERP) [8] (optional: Sakoe-Chiba window [7])
+- Dynamic Time Warping (DTW) [9] (optional: Sakoe-Chiba window [7])
 - L1, L2, Lmax metric
-- Permutation distribution dissimilarity
-- Shaped-Based Distance (SBD)
+- Permutation distribution dissimilarity [10]
+- Shaped-Based Distance (SBD) [11]
+
+[1] Batista, G. E., Keogh, E. J., Tataw, O. M. & De Souza, V. M. (2014). Cid: An efficient complexity-invariant distance for time series.
+
+[2] Li, M., Badger, J. H., Chen, X., Kwong, S., Kearney, P. & Zhang, H. (2001). An information-based sequence distance and its application to whole mitochondrial genome phylogeny.
+
+[3] Keogh, E., Lonardi, S., Ratanamahatana, C. A., Wei, L., Lee, S.-H. & Handley, J. (2007). Compression-based data mining of sequential data.
+
+[4] Golay, X., Kollias, S., Stoll, G., Meier, D., Valavanis, A. & Boesiger, P. (1998). A new correlation-based fuzzy logic clustering algorithm for fmri.
+
+[5] Chouakria, A. D. & Nagabhushan, P. N. (2007). Adaptive dissimilarity index for measuring time series proximity.
+
+[6] Chen, L., Özsu, M. T. & Oria, V. (2005). Robust and fast similarity search for moving object trajectories.
+
+[7] Sakoe, H., & Chiba, S. (1978). Dynamic programming algorithm optimization for spoken word recognition.
+
+[8] Chen, L., & Ng, R. (2004, August). On the marriage of lp-norms and edit distance.
+
+[9] Berndt, D. J. & Clifford, J. (1994). Using dynamic time warping to find patterns in time series.
+
+[10] Brandmaier, A. M. (2011). Permutation distribution clustering and structural equation model trees.
+
+[11] Paparrizos, J. & Gravano, L. (2015). K-shape: Efficient and accurate clustering of time series.
 
 ## General Dissimilarity-Related Functions
 
