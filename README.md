@@ -22,6 +22,8 @@ All aggregation functions aggregate intervals of a fixed length from univariate 
 - piecewise standard deviation
 - Symbolic Aggregate Approximation [3] (SAX)
 
+### References
+
 [1] Keogh, E. J. & Pazzani, M. J. (2000). Scaling up dynamic time warping for datamining applications.
 
 [2] Keogh, E., Chakrabarti, K., Pazzani, M. & Mehrotra, S. (2001). Dimensionality reduction for fast similarity search in large time series databases.
@@ -39,9 +41,11 @@ We provide internal as well as external cluster validity indices.
 - (internal) Generalized Dunn Index [4, 5] based on intra- and inter-cluster dissimilarities
 - (external) Phi Coefficient [6]
 - (external) Purity (e.g. in [1])
-- (external) Rand Index [7, 8] (optional: normalization[1])
+- (external) Rand Index [7, 8] (optional: normalization [1])
 - (external) van Dongen measure [9] (optional: normalization [1])
 - (external) Variation of Information [10] (optional: normalization [1] and inversion to Normalized Mutual Information [11])
+
+### References
 
 [1] Wu, J., Xiong, H. & Chen, J. (2009). Adapting the right measures for k-means clustering.
 
@@ -71,7 +75,7 @@ All dissimilarities support univariate time series (=vectors) as well as multiva
 
 - Complexity-Invariant Distance (CID) [1] for L2 metric and DTW
 - Compression-/complexity-based dissimilarity [2, 3] (variant of CDM, using SAX representation and zip compression)
-- Correlaion-based distance [4]
+- Correlation-based distance [4]
 - Temporal correlation correction factor (CORT) [5] for L2 metric and DTW
 - Edit Distance on Real Sequences (EDR) [6] (optional: Sakoe-Chiba window [7])
 - Edit Distance with Real Penalty (ERP) [8] (optional: Sakoe-Chiba window [7])
@@ -79,6 +83,8 @@ All dissimilarities support univariate time series (=vectors) as well as multiva
 - L1, L2, Lmax metric
 - Permutation distribution dissimilarity [10]
 - Shaped-Based Distance (SBD) [11]
+
+### References
 
 [1] Batista, G. E., Keogh, E. J., Tataw, O. M. & De Souza, V. M. (2014). Cid: An efficient complexity-invariant distance for time series.
 
@@ -105,5 +111,5 @@ All dissimilarities support univariate time series (=vectors) as well as multiva
 ## General Dissimilarity-Related Functions
 
 - (parallelized) dissimilarity matrix computation
-- time series averaging
+- time-series averaging
 - z-scoring, min-max normalization
