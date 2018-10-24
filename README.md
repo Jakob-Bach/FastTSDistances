@@ -4,48 +4,84 @@
 [![codecov](https://codecov.io/gh/Jakob-Bach/FastTSDistances/branch/master/graph/badge.svg)](https://codecov.io/gh/Jakob-Bach/FastTSDistances)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This R package contains fast (mostly C++) implementations of time series dissimilarities, simple aggregation functions for time series and cluster validity indices.
-The package is not on `CRAN`, but can be installed manually.
-Assuming you have installed the package `devtools`, you can simply run `devtools::install_github("Jakob-Bach/FastTSDistances")` to install `FastTSDistances` into your local R package repository.
-After installation, you can call `help(package = "FastTSDistances")` to get an overview of the package's functions.
+This R package contains fast (mostly C++) implementations of time series dissimilarities, aggregation functions for time series and cluster validity indices.
 
-## Aggregation Functions
+## Overview
 
-All aggregation functions aggregate intervals of a fixed length from univariate time series (=vectors).
+This package has been developed as part of a research project on understanding the effects of energy-data aggregation on clustering quality.
+For more information on the project, see the companion website: https://www.ipd.kit.edu/clustagg/.
+
+## Setup
+The FastTSDistances is not on `CRAN`, and has to be installed manually.
+You can install the package directly from github via the [devtools package](https://github.com/r-lib/devtools).
+
+```
+devtools::install_github("Jakob-Bach/FastTSDistances")
+```
+
+After installation, call `help(package = "FastTSDistances")` for an overview of the package functions.
+
+## Functionality
+
+The package functionality falls into three categories: time-series dissimilarity, cluster validity, aggregation.
+
+### Time-Series Dissimilarity
+
+A dissimilarity function quantifies the dissimiliarity between two time series.
+This package supports univariate time series (i.e., vectors) and multivariate time series (i.e., matrices with the columns representing different attributes).
+It implements the following dissimilaritiy functions:
+
+- Complexity-Invariant Distance (CID) [15] for L2 metric and DTW
+- Compression-/complexity-based dissimilarity [16, 17] (variant of CDM, using SAX representation and zip compression)
+- Correlation-based distance [18]
+- Temporal correlation correction factor (CORT) [19] for L2 metric and DTW
+- Edit Distance on Real Sequences (EDR) [20] (optional: Sakoe-Chiba window [21])
+- Edit Distance with Real Penalty (ERP) [22] (optional: Sakoe-Chiba window [21])
+- Dynamic Time Warping (DTW) [23] (optional: Sakoe-Chiba window [21])
+- L1, L2, Lmax metric
+- Permutation distribution dissimilarity [24]
+- Shaped-Based Distance (SBD) [25]
+
+### Cluster Validity
+
+A cluster validty index quantifies the quality of a cluster assignment.
+This package implements the following internal and external cluster validity indices:
+
+* Entropy of an integer vector with cluster assignments from 1 to k
+* External Validity
+  * Conditional entropy (e.g. in [1])
+  * Fowlkes-Mallows Index [2] (optional: with normalization [1])
+  * Phi Coefficient [6]
+  * Purity (e.g. in [1])
+  * Rand Index [7, 8] (optional: normalization[1])
+  * van Dongen measure [9] (optional: normalization [1])
+  * Variation of Information [10] (optional: normalization [1] and inversion to Normalized Mutual Information [11])
+* Internal Validity
+  * Generalized Davies-Bouldin Index [3] based on intra- and inter-cluster dissimilarities; also in the inverted version which reports higher values for better validity
+  * Generalized Dunn Index [4, 5] based on intra- and inter-cluster dissimilarities
+
+### Aggregation
+
+An aggregation function aggregates a univariate time series over fixed length intervals.
+This package supports the following aggregation functions:
 
 - piecewise kurtosis
 - piecewise maximum
-- piecewise mean [1, 2]
+- piecewise mean [12, 13]
 - piecewise median
 - piecewise minimum
 - piecewise skewness
 - piecewise standard deviation
-- Symbolic Aggregate Approximation [3] (SAX)
+- Symbolic Aggregate Approximation [14] (SAX)
 
-### References
+### Further Dissimilarity-Related Functions
 
-[1] Keogh, E. J. & Pazzani, M. J. (2000). Scaling up dynamic time warping for datamining applications.
+- (parallelized) dissimilarity matrix computation
+- time series averaging
+- z-scoring, min-max normalization
 
-[2] Keogh, E., Chakrabarti, K., Pazzani, M. & Mehrotra, S. (2001). Dimensionality reduction for fast similarity search in large time series databases.
 
-[3] Lin, J., Keogh, E., Lonardi, S. & Chiu, B. (2003). A symbolic representation of time series, with implications for streaming algorithms.
-
-## Cluster Validity Indices
-
-We provide internal as well as external cluster validity indices.
-
-- (external) Conditional entropy (e.g. in [1])
-- Entropy of an integer vector containing values from 1 to k (like cluster assignments)
-- (external) Fowlkes-Mallows Index [2] (optional: normalization [1])
-- (internal) Generalized Davies-Bouldin Index [3] based on intra- and inter-cluster dissimilarities; also inverted version which is higher for better validity
-- (internal) Generalized Dunn Index [4, 5] based on intra- and inter-cluster dissimilarities
-- (external) Phi Coefficient [6]
-- (external) Purity (e.g. in [1])
-- (external) Rand Index [7, 8] (optional: normalization [1])
-- (external) van Dongen measure [9] (optional: normalization [1])
-- (external) Variation of Information [10] (optional: normalization [1] and inversion to Normalized Mutual Information [11])
-
-### References
+# References
 
 [1] Wu, J., Xiong, H. & Chen, J. (2009). Adapting the right measures for k-means clustering.
 
@@ -69,47 +105,30 @@ We provide internal as well as external cluster validity indices.
 
 [11] Fred, A. L. & Jain, A. K. (2002). Data clustering using evidence accumulation.
 
-## Dissimilarity Functions
+[12] Keogh, E. J. & Pazzani, M. J. (2000). Scaling up dynamic time warping for datamining applications.
 
-All dissimilarities support univariate time series (=vectors) as well as multivariate time series (matrices with the columns representing different attributes).
+[13] Keogh, E., Chakrabarti, K., Pazzani, M. & Mehrotra, S. (2001). Dimensionality reduction for fast similarity search in large time series databases.
 
-- Complexity-Invariant Distance (CID) [1] for L2 metric and DTW
-- Compression-/complexity-based dissimilarity [2, 3] (variant of CDM, using SAX representation and zip compression)
-- Correlation-based distance [4]
-- Temporal correlation correction factor (CORT) [5] for L2 metric and DTW
-- Edit Distance on Real Sequences (EDR) [6] (optional: Sakoe-Chiba window [7])
-- Edit Distance with Real Penalty (ERP) [8] (optional: Sakoe-Chiba window [7])
-- Dynamic Time Warping (DTW) [9] (optional: Sakoe-Chiba window [7])
-- L1, L2, Lmax metric
-- Permutation distribution dissimilarity [10]
-- Shaped-Based Distance (SBD) [11]
+[14] Lin, J., Keogh, E., Lonardi, S. & Chiu, B. (2003). A symbolic representation of time series, with implications for streaming algorithms.
 
-### References
+[15] Batista, G. E., Keogh, E. J., Tataw, O. M. & De Souza, V. M. (2014). Cid: An efficient complexity-invariant distance for time series.
 
-[1] Batista, G. E., Keogh, E. J., Tataw, O. M. & De Souza, V. M. (2014). Cid: An efficient complexity-invariant distance for time series.
+[16] Li, M., Badger, J. H., Chen, X., Kwong, S., Kearney, P. & Zhang, H. (2001). An information-based sequence distance and its application to whole mitochondrial genome phylogeny.
 
-[2] Li, M., Badger, J. H., Chen, X., Kwong, S., Kearney, P. & Zhang, H. (2001). An information-based sequence distance and its application to whole mitochondrial genome phylogeny.
+[17] Keogh, E., Lonardi, S., Ratanamahatana, C. A., Wei, L., Lee, S.-H. & Handley, J. (2007). Compression-based data mining of sequential data.
 
-[3] Keogh, E., Lonardi, S., Ratanamahatana, C. A., Wei, L., Lee, S.-H. & Handley, J. (2007). Compression-based data mining of sequential data.
+[18] Golay, X., Kollias, S., Stoll, G., Meier, D., Valavanis, A. & Boesiger, P. (1998). A new correlation-based fuzzy logic clustering algorithm for fmri.
 
-[4] Golay, X., Kollias, S., Stoll, G., Meier, D., Valavanis, A. & Boesiger, P. (1998). A new correlation-based fuzzy logic clustering algorithm for fmri.
+[19] Chouakria, A. D. & Nagabhushan, P. N. (2007). Adaptive dissimilarity index for measuring time series proximity.
 
-[5] Chouakria, A. D. & Nagabhushan, P. N. (2007). Adaptive dissimilarity index for measuring time series proximity.
+[20] Chen, L., Özsu, M. T. & Oria, V. (2005). Robust and fast similarity search for moving object trajectories.
 
-[6] Chen, L., Özsu, M. T. & Oria, V. (2005). Robust and fast similarity search for moving object trajectories.
+[21] Sakoe, H., & Chiba, S. (1978). Dynamic programming algorithm optimization for spoken word recognition.
 
-[7] Sakoe, H., & Chiba, S. (1978). Dynamic programming algorithm optimization for spoken word recognition.
+[22] Chen, L., & Ng, R. (2004, August). On the marriage of lp-norms and edit distance.
 
-[8] Chen, L., & Ng, R. (2004, August). On the marriage of lp-norms and edit distance.
+[23] Berndt, D. J. & Clifford, J. (1994). Using dynamic time warping to find patterns in time series.
 
-[9] Berndt, D. J. & Clifford, J. (1994). Using dynamic time warping to find patterns in time series.
+[24] Brandmaier, A. M. (2011). Permutation distribution clustering and structural equation model trees.
 
-[10] Brandmaier, A. M. (2011). Permutation distribution clustering and structural equation model trees.
-
-[11] Paparrizos, J. & Gravano, L. (2015). K-shape: Efficient and accurate clustering of time series.
-
-## General Dissimilarity-Related Functions
-
-- (parallelized) dissimilarity matrix computation
-- time-series averaging
-- z-scoring, min-max normalization
+[25] Paparrizos, J. & Gravano, L. (2015). K-shape: Efficient and accurate clustering of time series.
