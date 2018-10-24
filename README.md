@@ -12,8 +12,8 @@ This package has been developed as part of a research project on understanding t
 For more information on the project, see the companion website: https://www.ipd.kit.edu/clustagg/.
 
 ## Setup
-The FastTSDistances is not on `CRAN`, and has to be installed manually.
-You can install the package directly from github via the [devtools package](https://github.com/r-lib/devtools).
+The FastTSDistances package is not on `CRAN`, and has to be installed manually.
+You can install the package directly from GitHub via the [devtools package](https://github.com/r-lib/devtools).
 
 ```
 devtools::install_github("Jakob-Bach/FastTSDistances")
