@@ -1,6 +1,7 @@
 # Fast Dissimilarity Computations for Time Series
 
-[![Build Status](https://travis-ci.com/Jakob-Bach/FastTSDistances.svg?branch=master)](https://travis-ci.com/Jakob-Bach/FastTSDistances)
+[![Travis Build Status](https://travis-ci.com/Jakob-Bach/FastTSDistances.svg?branch=master)](https://travis-ci.com/Jakob-Bach/FastTSDistances)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/yq4ifrqueo94370i/branch/master?svg=true)](https://ci.appveyor.com/project/Jakob-Bach/fasttsdistances/branch/master)
 [![codecov](https://codecov.io/gh/Jakob-Bach/FastTSDistances/branch/master/graph/badge.svg)](https://codecov.io/gh/Jakob-Bach/FastTSDistances)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
