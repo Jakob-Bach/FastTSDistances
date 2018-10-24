@@ -8,7 +8,7 @@ This R package contains fast (mostly C++) implementations of time series dissimi
 
 ## Overview
 
-This package has been developed as part of a research project on understanding the effects of energy-data aggregation on clustering qualit.
+This package has been developed as part of a research project on understanding the effects of energy-data aggregation on clustering quality.
 For more information on the project, see the companion website: https://www.ipd.kit.edu/clustagg/.
 
 ## Setup
@@ -31,15 +31,16 @@ A dissimilarity function quantifies the dissimiliarity between two time series.
 This package supports univariate time series (i.e., vectors) and multivariate time series (i.e., matrices with the columns representing different attributes).
 It implements the following dissimilaritiy functions:
 
-- Complexity-Invariant Distance (CID) for L2 metric and DTW
-- Compression-/complexity-based dissimilarity (variant of CDM, using SAX representation and zip compression)
-- Temporal correlation correction factor (CORT) for L2 metric and DTW
-- Edit Distance on Real Sequences (EDR) (optional: Sakoe-Chiba window)
-- Edit Distance with Real Penalty (ERP) (optional: Sakoe-Chiba window)
-- Dynamic Time Warping (DTW) (optional: Sakoe-Chiba window)
+- Complexity-Invariant Distance (CID) [15] for L2 metric and DTW
+- Compression-/complexity-based dissimilarity [16, 17] (variant of CDM, using SAX representation and zip compression)
+- Correlation-based distance [18]
+- Temporal correlation correction factor (CORT) [19] for L2 metric and DTW
+- Edit Distance on Real Sequences (EDR) [20] (optional: Sakoe-Chiba window [21])
+- Edit Distance with Real Penalty (ERP) [22] (optional: Sakoe-Chiba window [21])
+- Dynamic Time Warping (DTW) [23] (optional: Sakoe-Chiba window [21])
 - L1, L2, Lmax metric
-- Permutation distribution dissimilarity
-- Shaped-Based Distance (SBD)
+- Permutation distribution dissimilarity [24]
+- Shaped-Based Distance (SBD) [25]
 
 ### Cluster Validity
 
@@ -66,12 +67,12 @@ This package supports the following aggregation functions:
 
 - piecewise kurtosis
 - piecewise maximum
-- piecewise mean
+- piecewise mean [12, 13]
 - piecewise median
 - piecewise minimum
 - piecewise skewness
 - piecewise standard deviation
-- Symbolic Aggregate Approximation (SAX)
+- Symbolic Aggregate Approximation [14] (SAX)
 
 ### Further Dissimilarity-Related Functions
 
@@ -103,3 +104,31 @@ This package supports the following aggregation functions:
 [10] Meila, M. (2003). Comparing clusterings by the variation of information.
 
 [11] Fred, A. L. & Jain, A. K. (2002). Data clustering using evidence accumulation.
+
+[12] Keogh, E. J. & Pazzani, M. J. (2000). Scaling up dynamic time warping for datamining applications.
+
+[13] Keogh, E., Chakrabarti, K., Pazzani, M. & Mehrotra, S. (2001). Dimensionality reduction for fast similarity search in large time series databases.
+
+[14] Lin, J., Keogh, E., Lonardi, S. & Chiu, B. (2003). A symbolic representation of time series, with implications for streaming algorithms.
+
+[15] Batista, G. E., Keogh, E. J., Tataw, O. M. & De Souza, V. M. (2014). Cid: An efficient complexity-invariant distance for time series.
+
+[16] Li, M., Badger, J. H., Chen, X., Kwong, S., Kearney, P. & Zhang, H. (2001). An information-based sequence distance and its application to whole mitochondrial genome phylogeny.
+
+[17] Keogh, E., Lonardi, S., Ratanamahatana, C. A., Wei, L., Lee, S.-H. & Handley, J. (2007). Compression-based data mining of sequential data.
+
+[18] Golay, X., Kollias, S., Stoll, G., Meier, D., Valavanis, A. & Boesiger, P. (1998). A new correlation-based fuzzy logic clustering algorithm for fmri.
+
+[19] Chouakria, A. D. & Nagabhushan, P. N. (2007). Adaptive dissimilarity index for measuring time series proximity.
+
+[20] Chen, L., Özsu, M. T. & Oria, V. (2005). Robust and fast similarity search for moving object trajectories.
+
+[21] Sakoe, H., & Chiba, S. (1978). Dynamic programming algorithm optimization for spoken word recognition.
+
+[22] Chen, L., & Ng, R. (2004, August). On the marriage of lp-norms and edit distance.
+
+[23] Berndt, D. J. & Clifford, J. (1994). Using dynamic time warping to find patterns in time series.
+
+[24] Brandmaier, A. M. (2011). Permutation distribution clustering and structural equation model trees.
+
+[25] Paparrizos, J. & Gravano, L. (2015). K-shape: Efficient and accurate clustering of time series.
