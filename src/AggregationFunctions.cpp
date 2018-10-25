@@ -70,8 +70,8 @@ NumericVector PAA_fast(NumericVector x, int windowCount) {
   for (int i = 0; i < windowCount; i++) {
     windowStartIdx = windowLength * i;
     windowEndIdx = windowLength * (i+1) - 1;
-    fullWindowStartIdx = ceil(windowStartIdx);
-    fullWindowEndIdx = floor(windowEndIdx);
+    fullWindowStartIdx = std::ceil(windowStartIdx);
+    fullWindowEndIdx = std::floor(windowEndIdx);
     startFraction = fullWindowStartIdx - windowStartIdx;
     endFraction = windowEndIdx - fullWindowEndIdx;
     aggValue = 0;
@@ -111,8 +111,8 @@ NumericVector PMaxAA_fast(NumericVector x, int windowCount) {
   double aggValue;
   int windowStartIdx, windowEndIdx;
   for (int i = 0; i < windowCount; i++) {
-    windowStartIdx = floor(windowLength * i);
-    windowEndIdx = floor(windowLength * (i+1) - 1);
+    windowStartIdx = std::floor(windowLength * i);
+    windowEndIdx = std::floor(windowLength * (i+1) - 1);
     aggValue = x[windowStartIdx];
     for (int j = windowStartIdx + 1; j <= windowEndIdx; j++) {
       aggValue = std::max(aggValue, x[j]);
@@ -146,8 +146,8 @@ NumericVector PMedAA_fast(NumericVector x, int windowCount) {
   double med1, med2, medIndexDouble;
   int windowStartIdx, windowEndIdx, medIndexInt;
   for (int i = 0; i < windowCount; i++) {
-    windowStartIdx = floor(windowLength * i);
-    windowEndIdx = floor(windowLength * (i+1) - 1);
+    windowStartIdx = std::floor(windowLength * i);
+    windowEndIdx = std::floor(windowLength * (i+1) - 1);
     // median code adapted from http://gallery.rcpp.org/articles/robust-estimators/
     NumericVector window = x[Range(windowStartIdx, windowEndIdx)];
     medIndexDouble = (window.size() - 1) / 2.0;
@@ -189,8 +189,8 @@ NumericVector PMinAA_fast(NumericVector x, int windowCount) {
   double aggValue;
   int windowStartIdx, windowEndIdx;
   for (int i = 0; i < windowCount; i++) {
-    windowStartIdx = floor(windowLength * i);
-    windowEndIdx = floor(windowLength * (i+1) - 1);
+    windowStartIdx = std::floor(windowLength * i);
+    windowEndIdx = std::floor(windowLength * (i+1) - 1);
     aggValue = x[windowStartIdx];
     for (int j = windowStartIdx + 1; j <= windowEndIdx; j++) {
       aggValue = std::min(aggValue, x[j]);
@@ -228,8 +228,8 @@ NumericVector PSDAA_fast(NumericVector x, int windowCount, bool sample = false) 
   for (int i = 0; i < windowCount; i++) {
     windowStartIdx = windowLength * i;
     windowEndIdx = windowLength * (i+1) - 1;
-    fullWindowStartIdx = ceil(windowStartIdx);
-    fullWindowEndIdx = floor(windowEndIdx);
+    fullWindowStartIdx = std::ceil(windowStartIdx);
+    fullWindowEndIdx = std::floor(windowEndIdx);
     startFraction = fullWindowStartIdx - windowStartIdx;
     endFraction = windowEndIdx - fullWindowEndIdx;
     linearSum = 0;
@@ -267,8 +267,8 @@ NumericVector PSDAA_fast(NumericVector x, int windowCount, bool sample = false) 
 //' @return The weighted mean as double.
 // [[Rcpp::export]]
 double subVectorMean_fast(NumericVector x, double startIdx, double endIdx) {
-  double fullWindowStartIdx = ceil(startIdx);
-  double fullWindowEndIdx = floor(endIdx);
+  double fullWindowStartIdx = std::ceil(startIdx);
+  double fullWindowEndIdx = std::floor(endIdx);
   double startFraction = fullWindowStartIdx - startIdx;
   double endFraction = fullWindowEndIdx - endIdx;
   double result = 0;
@@ -316,8 +316,8 @@ NumericVector PSkewAA_fast(NumericVector x, int windowCount, double nanReplace =
   for (int i = 0; i < windowCount; i++) {
     windowStartIdx = windowLength * i;
     windowEndIdx = windowLength * (i+1) - 1;
-    fullWindowStartIdx = ceil(windowStartIdx);
-    fullWindowEndIdx = floor(windowEndIdx);
+    fullWindowStartIdx = std::ceil(windowStartIdx);
+    fullWindowEndIdx = std::floor(windowEndIdx);
     startFraction = fullWindowStartIdx - windowStartIdx;
     endFraction = windowEndIdx - fullWindowEndIdx;
     windowMean = subVectorMean_fast(x, windowStartIdx, windowEndIdx);
@@ -379,8 +379,8 @@ NumericVector PKurtAA_fast(NumericVector x, int windowCount, double nanReplace =
   for (int i = 0; i < windowCount; i++) {
     windowStartIdx = windowLength * i;
     windowEndIdx = windowLength * (i+1) - 1;
-    fullWindowStartIdx = ceil(windowStartIdx);
-    fullWindowEndIdx = floor(windowEndIdx);
+    fullWindowStartIdx = std::ceil(windowStartIdx);
+    fullWindowEndIdx = std::floor(windowEndIdx);
     startFraction = fullWindowStartIdx - windowStartIdx;
     endFraction = windowEndIdx - fullWindowEndIdx;
     windowMean = subVectorMean_fast(x, windowStartIdx, windowEndIdx);
