@@ -78,7 +78,9 @@ NumericVector PAA_fast(NumericVector x, int windowCount) {
     if (startFraction > 0) {
       aggValue += x[fullWindowStartIdx - 1] * startFraction;
     }
-    if (endFraction > 0) {
+    // 2nd condition is a safeguard against index-out-of-bounds because of
+    // numerical imprecision
+    if (endFraction > 0 && fullWindowEndIdx < x.size() - 1) {
       aggValue += x[fullWindowEndIdx + 1] * endFraction;
     }
     for (int j = fullWindowStartIdx; j <= fullWindowEndIdx; j++) {
@@ -238,7 +240,7 @@ NumericVector PSDAA_fast(NumericVector x, int windowCount, bool sample = false) 
       linearSum = x[fullWindowStartIdx - 1] * startFraction;
       squaredSum = x[fullWindowStartIdx - 1] * x[fullWindowStartIdx - 1] * startFraction;
     }
-    if (endFraction > 0) {
+    if (endFraction > 0 && fullWindowEndIdx < x.size() - 1) {
       linearSum += x[fullWindowEndIdx + 1] * endFraction;
       squaredSum += x[fullWindowEndIdx + 1] * x[fullWindowEndIdx + 1] * endFraction;
     }
@@ -275,7 +277,7 @@ double subVectorMean_fast(NumericVector x, double startIdx, double endIdx) {
   if (startFraction > 0) {
     result += x[fullWindowStartIdx - 1] * startFraction;
   }
-  if (endFraction > 0) {
+  if (endFraction > 0 && fullWindowEndIdx < x.size() - 1) {
     result += x[fullWindowEndIdx + 1] * endFraction;
   }
   for (int j = fullWindowStartIdx; j <= fullWindowEndIdx; j++) {
@@ -327,7 +329,7 @@ NumericVector PSkewAA_fast(NumericVector x, int windowCount, double nanReplace =
       squaredSum += pow(x[fullWindowStartIdx - 1], 2) * startFraction;
       cubedSum += pow(x[fullWindowStartIdx - 1] - windowMean, 3) * startFraction;
     }
-    if (endFraction > 0) {
+    if (endFraction > 0 && fullWindowEndIdx < x.size() - 1) {
       squaredSum += pow(x[fullWindowEndIdx + 1], 2) * endFraction;
       cubedSum += pow(x[fullWindowEndIdx + 1] - windowMean, 3) * endFraction;
     }
@@ -390,7 +392,7 @@ NumericVector PKurtAA_fast(NumericVector x, int windowCount, double nanReplace =
       squaredSum += pow(x[fullWindowStartIdx - 1], 2) * startFraction;
       quadSum += pow(x[fullWindowStartIdx - 1] - windowMean, 4) * startFraction;
     }
-    if (endFraction > 0) {
+    if (endFraction > 0 && fullWindowEndIdx < x.size() - 1) {
       squaredSum += pow(x[fullWindowEndIdx + 1], 2) * endFraction;
       quadSum += pow(x[fullWindowEndIdx + 1] - windowMean, 4) * endFraction;
     }
